@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+//Un-comment after adding google-services.json file
+//apply plugin: 'com.google.gms.google-services'
+// apply luciq APM plugin for capturing network requests
+apply plugin: 'luciq-apm'
+
+android {
+    compileSdkVersion 34
+
+    defaultConfig {
+        applicationId "ai.example.luciq"
+        minSdkVersion 19
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        flavorDimensions "default"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+//            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+repositories {
+//    maven {
+        // TODO add this only if interested in getting SNAPSHOT releases
+//        url "https://central.sonatype.com/repository/maven-snapshots/"
+//    }
+    google()
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.multidex:multidex:$rootProject.ext.multidex"
+    implementation "com.google.android.material:material:$rootProject.ext.material"
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.androidXAppCompat"
+
+    implementation 'com.google.firebase:firebase-core:21.1.1'
+    implementation 'com.google.firebase:firebase-messaging:23.1.1'
+
+    //TODO add the following 2 lines if you exclude io.reactivex from Luciq
+    //implementation 'io.reactivex:rxjava:1.0.13'
+    //implementation 'io.reactivex:rxandroid:1.0.1'
+    implementation("ai.luciq.library:luciq:$rootProject.ext.luciqSDK") {
+        // TODO uncomment this line to exclude RxJava from Luciq and use your own version
+        // exclude group: 'io.reactivex'
+
+        // TODO uncomment next line if you're facing compilation issue in build.gradle about gms different versions
+        //exclude group: 'com.android.support'
+    }
+    implementation("ai.luciq.library:luciq-ndk-crash:$rootProject.ext.luciqSDK")
+    implementation "com.github.skydoves:colorpickerview:$rootProject.ext.colorPicker"
+    implementation "androidx.fragment:fragment-ktx:$rootProject.ext.fragmentKtx"
+
+}
+
+
+task uploadMappingFiles(type: Exec) {
+    android.applicationVariants.all {
+        if (it.buildType.name == "release" && it.mappingFile != null && it.mappingFile.exists()) {
+            commandLine 'sh', '../upload_mapping.sh', "APP_TOKEN", it.versionCode, it.versionName, it.mappingFile
+        }
+    }
+}

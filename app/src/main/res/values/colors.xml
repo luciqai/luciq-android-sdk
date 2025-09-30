@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#1E2A37</color>
     <color name="colorAccent">#F59D00</color>
     <color name="navIcons">#AEAEAE</color>
+    <color name="blue_light">#64B5F6</color>
 </resources>

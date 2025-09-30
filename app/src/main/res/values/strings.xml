@@ -36,4 +36,19 @@
     <string name="action_show_invocation_events">Show Invocation Events</string>
     <string name="action_change_theme">Change theme</string>
     <string name="action_change_primary_color">Set primary color</string>
+    <string name="bug_reporting">Bug reporting</string>
+    <string name="crash_reporting">Crash reporting</string>
+    <string name="send_bug">Report a Bug</string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="ask_question">Ask a Question</string>
+    <string name="email_hint">Enter your email</string>
+    <string name="set_email">Set your Email</string>
+    <string name="extended_bug_report">Set extended bug report state</string>
+    <string-array name="extended_bug_report_options">
+        <item>Enabled and required</item>
+        <item>Enabled and optional</item>
+        <item>Disabled</item>
+    </string-array>
+    <string name="bug_reporting_state">Bug reporting</string>
+
 </resources>

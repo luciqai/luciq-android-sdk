@@ -24,6 +24,7 @@ public class BugReportingActivity extends BaseActivity {
     EditText emailEditText;
     Spinner extendedBugReportSpinner;
     Switch bugReportingSwitch;
+    Spinner onSelectAvailableAttachmentsSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class BugReportingActivity extends BaseActivity {
         emailEditText = findViewById(R.id.set_email_edit_text);
         extendedBugReportSpinner = findViewById(R.id.extended_bug_report_state);
         bugReportingSwitch = findViewById(R.id.bug_reporting_switch);
+        onSelectAvailableAttachmentsSpinner = findViewById(R.id.bug_reporting_attachments_state);
         //Luciq logs
         LuciqLog.d("Bug reporting activity - Created");
         extendedBugReportSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -47,6 +49,16 @@ public class BugReportingActivity extends BaseActivity {
         bugReportingSwitch.setOnCheckedChangeListener((view, isChecked) -> {
                 boolean bugReportingState = isChecked;
             onBugReportingState(view, bugReportingState);
+        });
+        onSelectAvailableAttachmentsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String optionSelected = parent.getItemAtPosition(position).toString();
+                onSelectAvailableAttachments(view, optionSelected);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
     }
 
@@ -72,6 +84,26 @@ public class BugReportingActivity extends BaseActivity {
         else {
             Luciq.identifyUser(null,email,null);
             LuciqLog.d("Valid email set: " + email);
+        }
+    }
+    public void onSelectAvailableAttachments(View view, String option)
+    {
+        switch (option){
+            case "All enabled":
+                BugReporting.setAttachmentTypesEnabled(true, true, true, true);
+                break;
+            case "Initial screenshot only":
+                BugReporting.setAttachmentTypesEnabled(true, false, false, false);
+                break;
+            case "Extra screenshots only":
+                BugReporting.setAttachmentTypesEnabled(false, true, false, false);
+                break;
+            case "From gallery only":
+                BugReporting.setAttachmentTypesEnabled(false, false, true, false);
+                break;
+            case "Screen recording only":
+                BugReporting.setAttachmentTypesEnabled(false, false, false, true);
+                break;
         }
     }
     public void onSelectExtendedBugReportOption(View view, String option)

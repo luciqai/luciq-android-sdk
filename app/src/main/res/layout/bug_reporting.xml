@@ -82,6 +82,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:entries="@array/extended_bug_report_options"/>
+        <TextView
+            android:id="@+id/bug_reporting_attachments_state_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:text="@string/bug_reporting_attachments_state_text"/>
+        <Spinner
+            android:id= "@+id/bug_reporting_attachments_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:entries="@array/bug_reporting_attachments_options"/>
     </LinearLayout>
 
 </LinearLayout>

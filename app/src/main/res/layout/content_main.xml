@@ -83,6 +83,22 @@
             android:text="@string/action_show_feature_requests" />
 
         <Button
+            android:id="@+id/bug_reporting_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onBugReportingClicked"
+            android:padding="10dp"
+            android:text="@string/bug_reporting" />
+
+        <Button
+            android:id="@+id/crash_reporting_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onCrashReportingClicked"
+            android:padding="10dp"
+            android:text="@string/crash_reporting" />
+
+        <Button
             android:id="@+id/action_show_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

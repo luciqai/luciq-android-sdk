@@ -98,6 +98,12 @@ public class MainActivity extends BaseActivity {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.luciq.ai"));
         startActivity(browserIntent);
     }
+    public void onBugReportingClicked(View view) {
+        startActivity(new Intent(this, BugReportingActivity.class));
+    }
+    public void onCrashReportingClicked(View view) {
+        startActivity(new Intent(this, CrashReportingActivity.class));
+    }
 
     private class FetchMoviesData extends AsyncTask<Void, Void, String> {
 

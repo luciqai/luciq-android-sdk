@@ -28,7 +28,7 @@
             android:textSize="16sp"
             android:trackTint="@color/blue_light"
             android:thumbTint="@color/blue_light"/>
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/send_a_bug_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             android:padding="10dp"
             android:text="@string/send_bug"
             android:layout_marginBottom="10dp"/>
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/send_feedback_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             android:padding="10dp"
             android:text="@string/send_feedback"
             android:layout_marginBottom="10dp"/>
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/ask_a_question_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/email_hint"
             android:textAllCaps="false"/>
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/set_email_btn"
             android:layout_width="150dp"
             android:layout_height="wrap_content"

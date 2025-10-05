@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="ai.example.luciq.ui.activities.MainActivity"
-    tools:showIn="@layout/app_bar_main">
-
+    tools:context="ai.example.luciq.ui.activities.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,86 +22,97 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/hello_world" />
+            android:text="@string/hello_world"
+            android:layout_marginTop="35dp"/>
 
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/action_show_live_onboarding_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onShowLiveOnboardingMessageClicked"
             android:padding="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/action_show_live_onboarding_message" />
 
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/action_show_beta_onboarding_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onShowBetaOnboardingMessageClicked"
             android:padding="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/action_show_beta_onboarding_message" />
 
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/start_bug_report"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onShowLuciqClicked"
             android:padding="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/action_show_luciq" />
 
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/crash_the_app"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onCrashTheAppClicked"
             android:padding="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/action_crash_the_app" />
 
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/show_nps_survey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showNPSSurvey"
             android:padding="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/action_show_nps_survey" />
 
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/action_show_multiple_question_survey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showMultipleQuestionSurvey"
             android:padding="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/action_show_multiple_question_survey" />
 
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/action_show_feature_requests"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showFeatureRequests"
             android:padding="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/action_show_feature_requests" />
 
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/bug_reporting_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onBugReportingClicked"
             android:padding="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/bug_reporting" />
 
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/crash_reporting_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onCrashReportingClicked"
             android:padding="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/crash_reporting" />
 
-        <Button
+        <ai.example.luciq.ui.activities.RoundedButton
             android:id="@+id/action_show_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onShowSettingsClicked"
             android:padding="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/action_show_settings" />
 
     </LinearLayout>

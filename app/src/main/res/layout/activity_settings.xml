@@ -6,28 +6,31 @@
 
     <include layout="@layout/app_bar" />
 
-    <Button
+    <ai.example.luciq.ui.activities.RoundedButton
         android:id="@+id/action_show_invocation_events"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onShowInvocationEventsClicked"
         android:padding="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/action_show_invocation_events" />
 
-    <Button
+    <ai.example.luciq.ui.activities.RoundedButton
         android:id="@+id/action_change_theme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onChangeThemeClicked"
         android:padding="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/action_change_theme" />
 
-    <Button
+    <ai.example.luciq.ui.activities.RoundedButton
         android:id="@+id/action_change_primary_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onChangePrimaryColorClicked"
         android:padding="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/action_change_primary_color" />
 
 </LinearLayout>

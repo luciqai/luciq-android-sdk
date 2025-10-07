@@ -18,8 +18,8 @@ public class CrashReportingActivity extends BaseActivity {
     Switch crashReportingSwitch;
     Switch anrSwitch;
     Switch ndkSwitch;
-    EditText exceptionNameEditText;
-    EditText fingerPrintEditText;
+    private EditText exceptionNameEditText;
+    private EditText fingerPrintEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +34,13 @@ public class CrashReportingActivity extends BaseActivity {
         //Luciq logs
         LuciqLog.d("Crash reporting activity - Created");
         crashReportingSwitch.setOnCheckedChangeListener((view, isChecked) -> {
-            boolean bugReportingState = isChecked;
-            onCrashReportingState(view, bugReportingState);
+            onCrashReportingState(view, isChecked);
         });
         anrSwitch.setOnCheckedChangeListener((view, isChecked) -> {
-            boolean anrState = isChecked;
-            onANRState(view, anrState);
+            onANRState(view, isChecked);
         });
         ndkSwitch.setOnCheckedChangeListener((view, isChecked) -> {
-            boolean ndkState = isChecked;
-            onNDKState(view, ndkState);
+            onNDKState(view, isChecked);
         });
 
     }

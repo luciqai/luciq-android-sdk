@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/finger_print_edit_text"
             android:textAllCaps="false"/>
-        <ai.example.luciq.ui.activities.RoundedButton
+        <ai.example.luciq.ui.views.RoundedButton
             android:id="@+id/report_nonfatal_btn"
             android:layout_width="150dp"
             android:layout_height="wrap_content"

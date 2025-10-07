@@ -6,7 +6,7 @@
 
     <include layout="@layout/app_bar" />
 
-    <ai.example.luciq.ui.activities.RoundedButton
+    <ai.example.luciq.ui.views.RoundedButton
         android:id="@+id/action_show_invocation_events"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/action_show_invocation_events" />
 
-    <ai.example.luciq.ui.activities.RoundedButton
+    <ai.example.luciq.ui.views.RoundedButton
         android:id="@+id/action_change_theme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/action_change_theme" />
 
-    <ai.example.luciq.ui.activities.RoundedButton
+    <ai.example.luciq.ui.views.RoundedButton
         android:id="@+id/action_change_primary_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

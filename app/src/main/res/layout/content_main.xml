@@ -25,7 +25,7 @@
             android:text="@string/hello_world"
             android:layout_marginTop="35dp"/>
 
-        <ai.example.luciq.ui.activities.RoundedButton
+        <ai.example.luciq.ui.views.RoundedButton
             android:id="@+id/action_show_live_onboarding_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/action_show_live_onboarding_message" />
 
-        <ai.example.luciq.ui.activities.RoundedButton
+        <ai.example.luciq.ui.views.RoundedButton
             android:id="@+id/action_show_beta_onboarding_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/action_show_beta_onboarding_message" />
 
-        <ai.example.luciq.ui.activities.RoundedButton
+        <ai.example.luciq.ui.views.RoundedButton
             android:id="@+id/start_bug_report"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/action_show_luciq" />
 
-        <ai.example.luciq.ui.activities.RoundedButton
+        <ai.example.luciq.ui.views.RoundedButton
             android:id="@+id/crash_the_app"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/action_crash_the_app" />
 
-        <ai.example.luciq.ui.activities.RoundedButton
+        <ai.example.luciq.ui.views.RoundedButton
             android:id="@+id/show_nps_survey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/action_show_nps_survey" />
 
-        <ai.example.luciq.ui.activities.RoundedButton
+        <ai.example.luciq.ui.views.RoundedButton
             android:id="@+id/action_show_multiple_question_survey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/action_show_multiple_question_survey" />
 
-        <ai.example.luciq.ui.activities.RoundedButton
+        <ai.example.luciq.ui.views.RoundedButton
             android:id="@+id/action_show_feature_requests"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/action_show_feature_requests" />
 
-        <ai.example.luciq.ui.activities.RoundedButton
+        <ai.example.luciq.ui.views.RoundedButton
             android:id="@+id/bug_reporting_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/bug_reporting" />
 
-        <ai.example.luciq.ui.activities.RoundedButton
+        <ai.example.luciq.ui.views.RoundedButton
             android:id="@+id/crash_reporting_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/crash_reporting" />
 
-        <ai.example.luciq.ui.activities.RoundedButton
+        <ai.example.luciq.ui.views.RoundedButton
             android:id="@+id/action_show_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,8 +1,7 @@
-package ai.example.luciq.ui.activities;
+package ai.example.luciq.ui.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
 
 import androidx.appcompat.widget.AppCompatButton;
 

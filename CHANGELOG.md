@@ -1,5 +1,25 @@
 # Luciq Android SDK Changelog
 
+## 18.2.0 (Nov 13, 2025)
+
+### Enhancements
+- Added support for app variant targeting in Surveys and Announcements to enable Cross-platform & Native App customers to target users by both app version and app variant
+```
+// Set app variant during SDK initialization
+    new Instabug.Builder(this, "APP_TOKEN")
+                .setAppVariant("App1")  // Set your app variant
+                .build();
+```
+- Increased character limit for disclaimer and consent fields in bug reporting to 200 chars
+
+### Bug Fixes
+- Fixed an issue that caused missing screenshots in Repro Steps for Flutter apps.
+- Fixed an issue where, under certain conditions, the first UI trace wasn’t inserted into the database, leading to SqliteConstraintException logs.
+- Fixed an issue where a white box covered the bug description field on small-screen devices.
+- Fixed a Disk Read StrictMode violation that occurred when attaching images from the gallery in Bug Reporting.
+- Fixed an issue where BugReporting.setDisclaimerText() did not apply if called immediately after SDK initialization.
+
+
 ## 18.1.0 (Oct 30, 2025)
 
 ### Enhancements

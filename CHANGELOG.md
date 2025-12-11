@@ -1,5 +1,18 @@
 # Luciq Android SDK Changelog
 
+## 18.2.1 (Nov 26, 2025)
+
+### Enhancements
+- Cleaned up and refined logging levels for non-critical events.
+
+### Bug Fixes
+- Fixed incorrect UI translation when the device locale is set to Portuguese (Brazil) pt_BR.
+    English String: Press record when ready
+    Incorrect Translation: Quando estiver pronto, prima Gravar
+    Correct Translation: Quando estiver pronto, comece a gravar.
+
+- Fixed Out of Memory (OOM) issues during chat messages synchronization by optimizing memory allocation and resource management in chats SynchronizationManager.
+
 ## 18.2.0 (Nov 13, 2025)
 
 ### Enhancements

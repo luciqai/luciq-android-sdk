@@ -58,7 +58,6 @@ More details about screen rendering can be found in our [docs](https://docs.luci
 
 - Fixed Out of Memory (OOM) issues during chat messages synchronization by optimizing memory allocation and resource management in chats SynchronizationManager.
 
-
 ## 18.2.0 (Nov 13, 2025)
 
 ### Enhancements

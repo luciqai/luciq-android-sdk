@@ -1,5 +1,50 @@
 # Luciq Android SDK Changelog
 
+## 19.0.0 (Dec 11, 2025)
+
+### Breaking Changes
+- Introducing a new, single network interceptor with automatic instrumentation for OkHttp and native UrlConnection. To enable network interception, gradle plugin should be configured:
+```kotlin
+// Project-level build.grade
+plugins {
+    id("ai.luciq.library") version "$luciqVersion" apply false 
+}
+```
+```kotlin
+
+// app-level build.gradle
+plugins {
+    id("luciq")
+}
+luciq {
+    networkInterception {
+        enabled = true // enables both of OKHttp and UrlConnection integration, defaults to false
+    }
+}
+dependencies {
+    // For OkHttp Support
+    implementation("ai.luciq.library:luciq-with-okhttp-interceptor:19.x.x")
+    implementation("ai.luciq.library:luciq-apm-okhttp-interceptor:19.x.x")
+}
+```
+A detailed migration guide can be found [here](https://docs.luciq.ai/docs/android-unified-network-interception)
+
+>[!WARNING]
+> Deprecated legacy interception is still available but switched off by default in favor of the new unified interception. To keep using the legacy interception please contact support to turn it on for your apps, but it’s planned to be removed in the future, so it’s not recommended.
+
+- Revamped APM's UI Hangs with slow and frozen frames metric. If UI Hangs' APIs are in use, they should be replaced with Screen Rendering APIs as follows:
+```kotlin
+APM.setUIHangEnabled() // Deprecated and should be replaced with 
+APM.setScreenRenderingEnabled()
+```
+More details about screen rendering can be found in our [docs](https://docs.luciq.ai/docs/android-apm-screen-rendering)
+
+>[!WARNING]
+> `APM.setUIHangEnabled()` is deprecated and capturing hangs is completely shutdown in favor of the new metric.
+
+### Bug Fixes
+- Fixed a race condition causing `android.database.sqlite.SQLiteConstraintException` error to be logged under certain conditions.
+
 ## 18.2.1 (Nov 26, 2025)
 
 ### Enhancements

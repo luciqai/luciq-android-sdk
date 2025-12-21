@@ -1,5 +1,14 @@
 # Luciq Android SDK Changelog
 
+## 19.0.1 (Dec 21, 2025)
+
+> [!WARNING]
+> Includes a critical fix for Compose v1.9.0+ users.
+
+### Bug Fixes
+
+- Fixes a critical incompatibility with Jetpack Compose v1.9.0+ that could prevent exceptions and crashes from being propagated.
+
 ## 19.0.0 (Dec 11, 2025)
 
 ### Breaking Changes
@@ -57,6 +66,7 @@ More details about screen rendering can be found in our [docs](https://docs.luci
     Correct Translation: Quando estiver pronto, comece a gravar.
 
 - Fixed Out of Memory (OOM) issues during chat messages synchronization by optimizing memory allocation and resource management in chats SynchronizationManager.
+
 
 ## 18.2.0 (Nov 13, 2025)
 

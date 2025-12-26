@@ -1,5 +1,61 @@
 # Luciq Android SDK Changelog
 
+## 19.1.0 (Dec 25, 2025)
+
+### Features
+
+- **Session Replay Screenshot Quality Control**: New API to adjust the visual quality of captured screenshots:
+```kotlin
+// Available quality options:
+// - ScreenshotQuality.NORMAL (default) - 25% compression, balanced size/quality
+// - ScreenshotQuality.HIGH - 50% compression, better clarity
+// - ScreenshotQuality.GREYSCALE - 25% compression, reduced color data
+SessionReplay.setScreenshotQuality(ScreenshotQuality.NORMAL)
+```
+
+- **Video-like Session Replay** *(Experimental)*: Capture screenshots based on user interactions or at fixed intervals for a video-like playback experience:
+
+>[!WARNING]
+> Video-like Session Replay may capture sensitive UI unmasked in some cases. USE AT YOUR OWN DISCRETION TO PREVENT PII LEAKAGE. Opt in ONLY after validating masking/privacy in your app.
+
+```kotlin
+@OptIn(ExperimentalVideoLikeReplay::class)
+fun configureVideoLikeSessionReplay() {
+    // Set capturing mode
+    // - CapturingMode.NAVIGATION (default) - Captures on screen changes
+    // - CapturingMode.INTERACTIONS - Captures on user interactions
+    // - CapturingMode.FREQUENCY - Captures at fixed intervals
+    SessionReplay.setCapturingMode(CapturingMode.FREQUENCY)
+
+    // Set screenshot capture interval (only applies to CapturingMode.FREQUENCY)
+    // Value in milliseconds. Minimum: 500ms, Default: 1000ms
+    SessionReplay.setScreenshotCaptureInterval(500)
+}
+```
+> [!NOTE]
+> Screens with `FLAG_SECURE` are automatically excluded. On low-performance devices, only NAVIGATION mode is available.
+
+For more details, see our [Session Replay documentation](https://docs.luciq.ai/docs/android-session-replay).
+
+### Enhancements
+
+- Feature Flags' keys and values limits are now server-side configurable.
+- Introduces actionable user consents for Bug Reporting with a new `NO_AUTOMATIC_BUG_GROUPING` action type
+```kotlin
+BugReporting.addUserConsent(
+    "grouping-consent",            // unique key
+    "Allow grouping similar bugs", // description (max 200 chars)
+    false,                         // isMandatory
+    true,                          // isChecked (default state)
+    ActionType.NO_AUTOMATIC_BUG_GROUPING
+)
+```
+Available action types: `DROP_AUTO_CAPTURED_MEDIA`, `DROP_LOGS`, `NO_CHAT`, `NO_AUTOMATIC_BUG_GROUPING`
+
+### Bug Fixes
+
+- Fixes a bug where keyboard open/close detection caused cyclic `onGlobalLayout` callbacks when adjusting the bottom sheet margin in Bug Reporting.
+
 ## 19.0.1 (Dec 21, 2025)
 
 > [!WARNING]

@@ -1,5 +1,44 @@
 # Luciq Android SDK Changelog
 
+## 19.2.0 (Jan 12, 2026)
+
+### Features
+
+- **WebView Monitoring**: Added comprehensive WebView monitoring to capture performance metrics, user interactions, and network requests from WebView components.
+  - New API: `Luciq.setWebViewMonitoringEnabled(boolean)` - Enable/disable master WebView monitoring
+  - New API: `Luciq.setWebViewUserInteractionsTrackingEnabled(boolean)` - Enable/disable user interaction tracking in WebViews
+  - New API: `Luciq.setWebViewNetworkTrackingEnabled(boolean)` - Enable/disable network logging from WebViews
+  - New build configuration: `luciq { webViewsTrackingEnabled = true }` - Enable WebView bytecode transformation
+  - WebView interactions and network requests now appear in bug reports with source identification
+  - Captured data includes performance traces, user steps, and network logs
+
+- **Notification Icon Color API**: Introduces `Replies.setNotificationIconColor()` to customize the background color of notification icons for Luciq chat notifications.
+```kotlin
+Replies.setNotificationIconColor(Color.RED)
+Replies.setNotificationIconColor(context.resources.getColor(R.color.my_color))
+```
+
+### Enhancements
+
+- Adds defensive validation to prevent sending corrupt app version data under certain conditions.
+
+### Bug Fixes
+
+- Fixes a race condition that could cause duplicate chat sync network requests under certain conditions.
+- Fixes an issue where proactive bug reporting does not trigger after user termination under certain conditions.
+- Fixes a bug causing logs and attachments to go missing with NDK crash reports under certain conditions.
+- Fixes a bug causing attachments not to be sent with reports under certain conditions.
+- Fixes a bug in Feature Requests where after submitting a new FR, a confirmation dialogue appears behind the success dialogue.
+- Fixes the attached Luciq logs while using the `onReportSubmitHandler`.
+- Fixes the attached tags while using the `onReportSubmitHandler`.
+- Fixes the attached user attributes while using the `onReportSubmitHandler`.
+- Fixes ProtectionLayout appearing repeatedly on each interaction with Composables when using `androidx.core:core-ktx` v1.16.0+.
+- Fixes button text color in chats to ensure proper visibility.
+- Fixes an issue where `setOnInvokeCallback` was not triggered when called before opening the bug reporting dialog.
+- Fixes alert dialogs appearing with a white background in dark mode when using a custom theme.
+
+---
+
 ## 19.1.0 (Dec 25, 2025)
 
 ### Features

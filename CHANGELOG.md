@@ -1,5 +1,17 @@
 # Luciq Android SDK Changelog
 
+## 19.2.1 (Jan 25, 2026)
+
+### Bug Fixes
+
+- Fixes an issue where the bug report form could sometimes open twice after a single shake gesture.
+- Fixes an issue where surveys and announcements being obscured by the system navigation bar on certain devices.
+- Fixes an issue where canceled network requests being incorrectly logged as errors when using the OkHttp interceptor.
+- Fixes a crash that could occur when accessing device storage on devices where external storage is temporarily unavailable.
+- Fixes NPE Error Log that could occur during URL connection interception for certain URL types (JAR, file protocols).
+
+---
+
 ## 19.2.0 (Jan 12, 2026)
 
 ### Features

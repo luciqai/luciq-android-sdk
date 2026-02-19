@@ -1,5 +1,25 @@
 # Luciq Android SDK Changelog
 
+## 19.2.2 (Feb 18, 2026)
+
+### Enhancements
+
+- Adds `LogLevel.WARNING` log level for filtering SDK warning logs. This is now the default log level.
+
+> [!WARNING]
+> The numeric values of `LogLevel.DEBUG` and `LogLevel.VERBOSE` have changed (`DEBUG`: 2 → 3, `VERBOSE`: 3 → 4). If you are using hardcoded integers instead of `LogLevel` constants, update your code to use the constants directly (e.g., `LogLevel.DEBUG` instead of `2`).
+
+- Resolves a security warning by replacing raw SQL construction with parameterized queries in internal diagnostics storage.
+
+### Bug Fixes
+
+- Fixes a build-time crash in the Gradle plugin when logging ASM bytecode transformations for certain ClassVisitor types.
+- Fixes an issue where user steps data scraping captured incorrect view IDs for legacy views inside private scope containers.
+- Fixes a crash that could occur when displaying chat messages with a null attachment type.
+- Fixes potential null pointer exceptions in bug reporting UI when fragment views are accessed after destruction.
+
+---
+
 ## 19.2.1 (Jan 25, 2026)
 
 ### Bug Fixes

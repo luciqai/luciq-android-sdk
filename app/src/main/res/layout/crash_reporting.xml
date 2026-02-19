@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/app_bar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <Switch
+            android:id="@+id/crash_reporting_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crash_reporting_state"
+            android:layout_marginBottom="15dp"
+            android:padding="10dp"
+            android:checked="true"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:trackTint="@color/blue_light"
+            android:thumbTint="@color/blue_light"/>
+        <Switch
+            android:id="@+id/anr_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/anr_text"
+            android:layout_marginBottom="15dp"
+            android:padding="10dp"
+            android:checked="true"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:trackTint="@color/blue_light"
+            android:thumbTint="@color/blue_light"/>
+        <Switch
+            android:id="@+id/ndk_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ndk_text"
+            android:layout_marginBottom="15dp"
+            android:padding="10dp"
+            android:checked="false"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:trackTint="@color/blue_light"
+            android:thumbTint="@color/blue_light"/>
+        <EditText
+            android:id="@+id/set_exception_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exception_name_edit_text"
+            android:textAllCaps="false"/>
+        <EditText
+            android:id="@+id/set_finger_print_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/finger_print_edit_text"
+            android:textAllCaps="false"/>
+        <ai.example.luciq.ui.views.RoundedButton
+            android:id="@+id/report_nonfatal_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:onClick="onReportNonFatalClicked"
+            android:padding="10dp"
+            android:text="@string/report_nonfatal"
+            android:textAllCaps="false"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,5 +1,38 @@
 # Luciq Android SDK Changelog
 
+## 19.3.0 (Mar 4, 2026)
+
+### Features
+
+- **Custom Spans in APM**: Adds support for Custom Spans to track custom operations with explicit start and end times.
+```kotlin
+// Start custom span
+val span: CustomSpan? = APM.startCustomSpan(name: string)
+// ... do work ...
+span?.end()  //end custom span
+
+// Save completed custom span with known start and end date
+APM.addCompletedCustomSpan(name: String, startDate: Date, endDate: Date)
+```
+
+### Enhancements
+
+- Adds default masking for WebView content to enhance privacy protection.
+- Reduces unnecessary error log output when reporting non-fatal exceptions.
+- Changes the ADB debug property key from `debug.instabug.apm.app` to `debug.luciq.app`. The old property is still supported as a fallback.
+- Changes error messaging when adding Feature Requests while offline to display a toast with clearer guidance.
+
+### Bug Fixes
+
+- Fixes an ANR caused by synchronous SharedPreferences access in the APM ContentProvider during app startup.
+- Fixes an ANR caused by Firebase initialization deadlock when Firebase Performance SDK is enabled by excluding Firebase network requests from APM interception.
+- Fixes a crash that occurs under certain conditions when invoking the SDK via the Floating Action Button.
+- Fixes malformed JSON in crash reports when message content exceeds size limits.
+- Fixes an issue where ScreenRendering traces were incorrectly attributed in specific scenarios.
+- Fixes a crash in Replies UI that occurs under certain conditions when the screen is closed unexpectedly.
+
+---
+
 ## 19.2.2 (Feb 18, 2026)
 
 ### Enhancements

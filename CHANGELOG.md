@@ -1,5 +1,16 @@
 # Luciq Android SDK Changelog
 
+## 19.4.0 (Apr 1, 2026)
+
+### Features & Enhancements
+
+- Adds satellite network type detection for Session Profiler and APM network logs, providing better visibility into network connectivity.
+- Adds Multi-window support in Surveys and Announcements.
+- Adds support for Compose BOM version 2026.03.00 (Compose 1.10.5).
+- Improved internal SDK logging and error handling to reduce noise.
+
+---
+
 ## 19.3.0 (Mar 4, 2026)
 
 ### Features

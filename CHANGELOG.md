@@ -1,5 +1,53 @@
 # Luciq Android SDK Changelog
 
+## 19.5.1 (Apr 19, 2026)
+
+### Bug Fixes
+
+- Fixes an ANR that could occur when non-HTTP URL connections (such as classpath resource loading via Kotlin reflection) were being intercepted by the network monitor.
+- Fixes an ANR that could occur when using the OkHttp network interceptor due to concurrent access from multiple threads during a network call.
+
+---
+
+## 19.5.0 (Apr 15, 2026)
+
+### New Features
+
+- Adds support for branching in Custom Surveys.
+- Adds NDK symbol upload Gradle task for automated symbol file (.so) upload during the build process. Check out the [docs](https://docs.luciq.ai/android/set-up-luciq-for-android/set-up-crash-reporting/deobfuscation-for-android#deobfuscating-ndk-c-crashes) for more details.
+```kotlin
+luciq {
+    crashReporting {
+        appToken = "APP_TOKEN"
+        ndkSymbol {
+            autoUploadEnabled = true
+            apiKey = "API_KEY"
+        }
+    }
+}
+```
+
+### Enhancements
+
+- Adds support for excluding custom URL patterns from OkHttp response body capture.
+```kotlin
+luciq {
+    networkInterception {
+        enabled = true
+        excludeUrlPatterns = listOf(".*chat/stream.*", ".*/events.*", ".*/notifications/live.*")
+        okHttp {
+            it.enabled = true
+        }
+    }
+}
+```
+
+### Bug Fixes
+
+- Fixes OkHttp interceptor breaking streaming/chunked HTTP responses (SSE/event-stream) by skipping response body buffering for streaming content types.
+
+---
+
 ## 19.4.0 (Apr 1, 2026)
 
 ### Features & Enhancements

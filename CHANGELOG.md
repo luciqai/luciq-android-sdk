@@ -1,5 +1,13 @@
 # Luciq Android SDK Changelog
 
+## 19.4.1
+
+### Bug Fixes
+
+- Fix host app crashes caused by RxJava UndeliverableException
+- Fix memory leak in screen rendering caused by an unbounded per-instance map and prevent
+  Window/Activity retention
+
 ## 19.4.0 (Apr 1, 2026)
 
 ### Features & Enhancements

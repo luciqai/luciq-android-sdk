@@ -1,5 +1,104 @@
 # Luciq Android SDK Changelog
 
+## 19.7.1 (June 3, 2026)
+
+### Features
+
+- Adds the `setCapturingContainerEnabled` API to control whether container screens (Activities, Fragments, and DialogFragments) generate Repro Steps screenshots.
+
+### Bug Fixes
+
+- Fixes a rare crash during screenshot capture when an Activity is being destroyed.
+
+## 19.7.0 (May 13, 2026)
+
+### Features
+
+- Adds the `setViewsContentCaptureEnabled` API to redact User Steps and Repro Steps content.
+- Adds support for params in user events.
+- Adds a Gradle configuration to automatically capture Jetpack Compose screens as APM screens.
+```kotlin
+luciq {
+  showAutoComposableAsScreen = true
+}
+```
+
+### Enhancements
+
+- Adds support for per-variant Luciq app tokens in the luciq-crash Gradle plugin.
+- Optimizes console log lock contention that could block the main thread and cause ANRs.
+
+### Bug Fixes
+
+- Fixes an ANR caused by thread-safety race in OkHttp network logging under concurrent traffic.
+- Fixes data capture in the inapp_webview plugin by instrumenting WebView subclasses.
+- Fixes OOM crashes in long background sessions by applying backoff on sync failure.
+
+## 19.6.0
+
+### New Features
+
+- Track user actions in React native webviews 
+- Support Screen Loading For React Native
+
+### Enhancements
+
+- Improve Accessibility in Bug Reporting screen
+
+### Bug Fixes
+- Fix host app crashes caused by RxJava UndeliverableException 
+- Fix deadlock between the APM ServiceLocator.class monitor and Kotlin by lazy internal locks which causes ANR in Flutter apps. 
+- Fix memory leak in screen rendering caused by an unbounded per-instance map and prevent
+  Window/Activity retention
+
+## 19.5.1 (Apr 19, 2026)
+
+### Bug Fixes
+
+- Fixes an ANR that could occur when non-HTTP URL connections (such as classpath resource loading via Kotlin reflection) were being intercepted by the network monitor.
+- Fixes an ANR that could occur when using the OkHttp network interceptor due to concurrent access from multiple threads during a network call.
+
+---
+
+## 19.5.0 (Apr 15, 2026)
+
+### New Features
+
+- Adds support for branching in Custom Surveys.
+- Adds NDK symbol upload Gradle task for automated symbol file (.so) upload during the build process. Check out the [docs](https://docs.luciq.ai/android/set-up-luciq-for-android/set-up-crash-reporting/deobfuscation-for-android#deobfuscating-ndk-c-crashes) for more details.
+```kotlin
+luciq {
+    crashReporting {
+        appToken = "APP_TOKEN"
+        ndkSymbol {
+            autoUploadEnabled = true
+            apiKey = "API_KEY"
+        }
+    }
+}
+```
+
+### Enhancements
+
+- Adds support for excluding custom URL patterns from OkHttp response body capture.
+```kotlin
+luciq {
+    networkInterception {
+        enabled = true
+        excludeUrlPatterns = listOf(".*chat/stream.*", ".*/events.*", ".*/notifications/live.*")
+        okHttp {
+            it.enabled = true
+        }
+    }
+}
+```
+
+### Bug Fixes
+
+- Fixes OkHttp interceptor breaking streaming/chunked HTTP responses (SSE/event-stream) by skipping response body buffering for streaming content types.
+
+---
+
 ## 19.4.0 (Apr 1, 2026)
 
 ### Features & Enhancements

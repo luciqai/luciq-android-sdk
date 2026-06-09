@@ -1,5 +1,17 @@
 # Luciq Android SDK Changelog
 
+## 19.8.0 (June 9, 2026)
+
+### Features
+
+- Added the ability to start a new session on logout so each user identity gets an isolated session, ensuring activity is attributed to the correct user. This is disabled by default — reach out to customer support team to enable it.
+
+### Bug Fixes
+
+- Fixes a rare ANR that could occur at crash time due to a lock-ordering deadlock while a session was being ended.
+- Fixes SDK diagnostic events — including network and Session Replay logs — being silently dropped on obfuscated (release) builds.
+- Fixes an empty (0-byte) `luciq_config.json` bundled in the SDK that could break post-build security / app-shielding tools.
+
 ## 19.7.1 (June 3, 2026)
 
 ### Features

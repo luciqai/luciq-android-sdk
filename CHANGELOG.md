@@ -1,5 +1,24 @@
 # Luciq Android SDK Changelog
 
+## 19.9.2 (July 13, 2026)
+
+### Enhancements
+
+- Improves the reliability of WebView network monitoring so it stays fully transparent to the page's own fetch / XMLHttpRequest requests.
+
+## 19.9.1 (June 29, 2026)
+
+### Enhancements
+
+- [Internal] Enhances SDK internal analytics
+
+## 19.9.0 (June 28, 2026)
+
+### Enhancements
+
+- Adds partial-success flagging for GraphQL responses in Bug Reports and Session Replay.
+- Improves SDK network efficiency.
+
 ## 19.8.0 (June 9, 2026)
 
 ### Features

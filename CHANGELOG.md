@@ -1,5 +1,16 @@
 # Luciq Android SDK Changelog
 
+## 19.10.0 (July 22, 2026)
+
+### Features
+
+- Adds screen rendering metrics support for Jetpack Compose screens in APM.
+
+### Enhancements
+
+- Resolves a security warning by replacing dynamically built SQL statements with parameterized queries in the SDK's internal storage.
+- Improves user event identifier validation: identifiers are now trimmed, sanitized against control characters, and capped at 200 characters.
+
 ## 19.9.2 (July 13, 2026)
 
 ### Enhancements

@@ -1,5 +1,24 @@
 # Luciq Android SDK Changelog
 
+## 19.10.1 (August 5, 2026)
+
+### Enhancements
+
+- Adds a read-only `isCanceled` property to `NetworkLogSnapshot`, letting apps identify and optionally drop cancelled network requests via the network log listener.
+```kotlin
+Luciq.setNetworkLogListener { networkLog ->
+    if (networkLog.isCanceled) null else networkLog
+}
+```
+
+- Reduces disk writes when the SDK applies configuration updates.
+- Reduces the overhead of APM screen rendering monitoring and releases its resources when the feature is disabled.
+- Reduces Session Replay CPU usage.
+
+### Bug Fixes
+
+- Fixes the screenshot, floating and screen-recording buttons being hidden behind bottom sheets and dialogs.
+
 ## 19.10.0 (July 22, 2026)
 
 ### Features

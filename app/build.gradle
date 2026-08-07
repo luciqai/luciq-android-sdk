@@ -4,6 +4,14 @@ apply plugin: 'com.android.application'
 // apply luciq APM plugin for capturing network requests
 apply plugin: 'luciq-apm'
 
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(new FileInputStream(localPropertiesFile))
+} else {
+    println("local.properties file isn't found!!!")
+}
+
 android {
     compileSdkVersion 34
 
@@ -16,6 +24,8 @@ android {
         multiDexEnabled true
         flavorDimensions "default"
         vectorDrawables.useSupportLibrary = true
+
+        buildConfigField "String", "INSTABUG_APP_TOKEN_KEY", "\"${localProperties['INSTABUG_APP_TOKEN_KEY']}\""
     }
     buildTypes {
         release {

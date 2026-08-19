@@ -1,5 +1,24 @@
 # Luciq Android SDK Changelog
 
+## 19.11.0 (August 19, 2026)
+
+### New Features
+
+- Extends theme support to In-App Surveys and Announcements, applying the same colors, fonts, and light/dark mode already used in Bug Reporting.
+
+### Enhancements
+
+- Adds support for Android 17 (API 37).
+- Adds support for Jetpack Compose BOM 2026.06.01 (Compose 1.11.4).
+- Improves text contrast in the bug reporting screen to meet WCAG AA.
+
+### Bug Fixes
+
+- Fixes text fields not being identified as input fields in User Steps and Repro Steps on Compose 1.8.0 and above.
+- Fixes the Surveys dialog showing at the wrong size after rotating the device.
+- Fixes screen reader announcements for consent checkboxes in the bug reporting screen.
+- Fixes an issue where surveys could fail to be fetched in some configurations.
+
 ## 19.10.1 (August 5, 2026)
 
 ### Enhancements

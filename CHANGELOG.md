@@ -1,5 +1,26 @@
 # Luciq Android SDK Changelog
 
+## 19.12.0 (September 2, 2026)
+
+### New Features
+
+- Adds render-aware screenshot capture, keeping private and auto-masked views accurately covered even when a layout or draw pass happens during capture. Applies to bug report screenshots, Repro Steps, and Session Replay. Disabled by default — enable and tune it at app startup.
+```kotlin
+Luciq.setRenderAwareScreenshotCapturingEnabled(true)
+Luciq.setScreenshotCapturingMaxRetries(3)
+Luciq.setScreenshotCapturingRetryDelay(200)
+```
+
+### Enhancements
+
+- Keeps the SDK running on emulators instead of pausing it on low virtual storage or memory, and no longer classifies emulators as low-performance devices.
+- [Internal] Enhances SDK internal analytics
+
+### Bug Fixes
+
+- Fixes mandatory version update announcements being dismissed after tapping "Update Now" even when the app was not updated, letting users continue into the app.
+- Fixes Repro Steps recording nested fragment screens out of order, where a child screen could be logged before the parent screens that contain it.
+
 ## 19.11.0 (August 19, 2026)
 
 ### New Features

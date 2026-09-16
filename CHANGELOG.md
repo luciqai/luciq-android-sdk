@@ -1,5 +1,11 @@
 # Luciq Android SDK Changelog
 
+## 19.12.1 (September 16, 2026)
+
+### Bug Fixes
+
+- Fixes manually logged network requests not appearing in APM.
+
 ## 19.12.0 (September 2, 2026)
 
 ### New Features

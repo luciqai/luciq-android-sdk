@@ -1,5 +1,51 @@
 # Luciq Android SDK Changelog
 
+## 19.13.0 (October 1, 2026)
+
+### New Features
+
+- Adds `keepScreenNames` to the Gradle plugin, which preserves the original Activity and Fragment names in APM traces, screen loading and rendering, crash and ANR reports, Repro Steps, Session Replay and bug reports. Intended for apps built with a class-renaming obfuscator such as DexGuard or Appdome, where screen names would otherwise be unreadable and change on every release. Requires the `luciq` plugin id and is disabled by default.
+```groovy
+plugins {
+    id 'luciq'
+}
+
+luciq {
+    keepScreenNames = true
+}
+```
+
+- Adds customizable success messages for bug reports, feedback, questions, and proactive reports.
+```java
+LuciqCustomTextPlaceHolder placeHolders = new LuciqCustomTextPlaceHolder();
+placeHolders.set(LuciqCustomTextPlaceHolder.Key.BUG_REPORT_SUCCESSFULLY_SENT, "Bug sent!");
+placeHolders.set(LuciqCustomTextPlaceHolder.Key.FEEDBACK_REPORT_SUCCESSFULLY_SENT, "Feedback sent!");
+placeHolders.set(LuciqCustomTextPlaceHolder.Key.QUESTION_REPORT_SUCCESSFULLY_SENT, "Question sent!");
+placeHolders.set(LuciqCustomTextPlaceHolder.Key.PROACTIVE_BUG_REPORT_SUCCESSFULLY_SENT, "Thanks for reporting!");
+Luciq.setCustomTextPlaceHolders(placeHolders);
+```
+
+- Adds APIs to retrieve configured custom text placeholders with live and snapshot access.
+- Adds the experimental `Surveys.disableFrequencyEvaluationInDebugBuilds()` API to show surveys every time their targeting conditions are met, ignoring the configured frequency, on debuggable builds only. The call is ignored on release builds.
+
+### Enhancements
+
+- Changes App Flows to be enabled by default on fresh installs until the feature configuration is received from the backend.
+- Fragment spans are now recorded in apps that do not apply the Gradle plugin, instead of being dropped. The non-fatal those apps used to get once per fragment is now reported at most once per process.
+
+### Deprecations
+
+- Deprecates the View Hierarchy APIs `BugReporting.setViewHierarchyState` and `Luciq.Builder.setViewHierarchyState`. The feature is discontinued, these APIs no longer have any effect, and they will be removed in an upcoming major release. There is no replacement.
+
+### Bug Fixes
+
+- Fixes an issue where fully failed GraphQL requests returning an HTTP 2xx status were incorrectly marked as partially successful.
+- Fixes an issue where the crash reporting cache could grow without limit in apps that are mostly launched in the background.
+- Fixes App Rating surveys showing the Yes/No and rate-us questions as text inputs after the user selects "No", which also caused the survey responses to be recorded incorrectly.
+- Fixes the module name reported for cross-platform screen loading traces, which named the SDK's own package instead of the current Activity's.
+- Fixes a SQL injection finding reported by security scanners: the SDK's database migration now only removes tables with standard names.
+- Fixes a path manipulation finding reported by security scanners: photos and videos attached from the gallery in bug reports and chats can no longer be read from, or saved to, locations outside the SDK's own attachment folders.
+
 ## 19.12.1 (September 16, 2026)
 
 ### Bug Fixes

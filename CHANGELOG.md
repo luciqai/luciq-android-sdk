@@ -1,5 +1,11 @@
 # Luciq Android SDK Changelog
 
+## 19.13.1 (October 7, 2026)
+
+### Bug Fixes
+
+- Fixes a crash in the Jetpack Compose draw pass (`LayoutNode.ZComparator` NullPointerException) caused by the screenshot masking hierarchy walk reading the Compose node tree off the main thread; also fixes Session Replay screenshots being dropped on scrolled `LazyColumn` screens.
+
 ## 19.13.0 (October 1, 2026)
 
 ### New Features

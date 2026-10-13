@@ -1,5 +1,35 @@
 # Luciq Android SDK Changelog
 
+## 19.14.0 (October 12, 2026)
+
+### New Features
+
+- Adds `Luciq.setOnBeforeSendHandler` and `Luciq.Builder.setOnBeforeSendHandler`, a hook invoked before each bug report and crash report is sent, to add tags, user attributes, user data and file attachments to it. Crash reports include non-fatal errors, ANRs and fatal hangs; the hook doesn't run for NDK crashes, surveys, feature requests or chat replies. It replaces `Luciq.onReportSubmitHandler`. Prefer the Builder method: it is in place from the first report, including a crash from the previous app launch, which a handler set later at runtime cannot see.
+- Adds `Luciq.removeTags` to remove tags added with `Luciq.addTags`.
+- Adds `Luciq.addOnNetworkTraceListener` and `Luciq.removeOnNetworkTraceListener` to attach custom attributes to captured network traces. They replace the APM-scoped `APM.addOnNetworkTraceListener` and `APM.removeOnNetworkTraceListener`.
+- Adds `Luciq.Builder.setNetworkLogListener` and `Luciq.Builder.setNetworkLogBodyEnabled` to set the network log listener and body capture from the first captured network log. They stay in place after `Luciq.disable()` and `Luciq.enable()`.
+
+### Enhancements
+
+- The Luciq Gradle plugin and SDK versions must match. When the plugin is newer than the SDK, it now skips the instrumentation that SDK does not support and logs a build warning, instead of producing an app that crashes or a release build that fails R8.
+- [Internal] Improves internal monitoring tools
+
+### Deprecations
+
+- Deprecates `Luciq.onReportSubmitHandler` in favor of `Luciq.setOnBeforeSendHandler`.
+- Deprecates `Luciq.getTags()` with no replacement, and it may return an empty list. Your tags are still attached to reports; to read them back, keep your own copy of the tags you add with `Luciq.addTags`.
+- Deprecates `APM.addOnNetworkTraceListener` and `APM.removeOnNetworkTraceListener` in favor of `Luciq.addOnNetworkTraceListener` and `Luciq.removeOnNetworkTraceListener`. The replacements take the `ai.luciq.core.networklogs.contract.OnNetworkTraceListener` type, so migrating means changing the listener import and the trace type the callback receives.
+- Deprecates `LuciqLog.getLogs()` and `LuciqLog.clearLogs()`.
+- Deprecates `CrashReporting.setOnCrashSentCallback` with no replacement. Don't rely on it to confirm that a crash report was sent.
+- Deprecates `CrashReporting.setUserIdentificationState` with no replacement. It removed the user's name and email (set with `Luciq.identifyUser`) from crash reports only: the same details are still sent with session data. To keep a user's name and email out of Luciq, don't pass them to `Luciq.identifyUser`.
+- Deprecates auto screen recording: `BugReporting.setAutoScreenRecordingEnabled` and `CrashReporting.deleteAutoScreenRecording`. To see what users did before a report, use Session Replay (https://docs.luciq.ai/android/set-up-luciq-for-android/set-up-session-replay). To let users attach a screen recording to a bug report, enable the screen recording attachment type through `BugReporting.setAttachmentTypesEnabled`.
+- `LuciqOkhttpInterceptor` has been deprecated since 19.0.0. We recommend migrating to automatic network interception with the Luciq Gradle plugin: https://docs.luciq.ai/android/set-up-luciq-for-android/logs-and-profiling/unified-network-interception
+- `LuciqAPMOkhttpInterceptor` and `LuciqAPMGrpcInterceptor` are deprecated. We recommend migrating to automatic network interception with the Luciq Gradle plugin for OkHttp (https://docs.luciq.ai/android/set-up-luciq-for-android/logs-and-profiling/unified-network-interception), and to `LuciqGrpcInterceptor` for gRPC.
+
+### Bug Fixes
+
+- Fixes host app builds failing on Android Gradle Plugin 9 with a duplicate `androidx.vectordrawable` namespace error. The SDK now requires `androidx.vectordrawable:vectordrawable-animated` 1.1.0 or above, so apps that pinned it manually to work around the failure can drop the pin.
+
 ## 19.13.1 (October 7, 2026)
 
 ### Bug Fixes

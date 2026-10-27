@@ -1,5 +1,11 @@
 # Luciq Android SDK Changelog
 
+## 19.14.1 (October 27, 2026)
+
+### Bug Fixes
+
+- Fixes `keepScreenNames` reporting obfuscated screen names in apps protected by obfuscators that rewrite class-name strings, such as Appdome, DexGuard, or R8 with `-adaptclassstrings`. Update both the Luciq SDK and the Gradle plugin to get the fix.
+
 ## 19.14.0 (October 12, 2026)
 
 ### New Features

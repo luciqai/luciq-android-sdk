@@ -1,5 +1,23 @@
 # Luciq Android SDK Changelog
 
+## 19.15.0 (October 29, 2026)
+
+### New Features
+
+- Adds detection of app terminations by Android 17's memory limiter, which kills an app that exceeds its system-enforced memory limit. They are reported as "Android Memory Limit Exceeded" under Memory terminations, with no stack trace. Requires Android 17 and is off by default. Adds `IssueType.MemoryLimitTermination` for Repro Steps configuration: until you set its mode, it follows `IssueType.ForceRestart`. `IssueType.AllCrashes` now includes it.
+- Adds `CrashReporting.onTaskRemoved()`. Call it from `onTaskRemoved` of the service that keeps your process running, typically a foreground service. Without it, swiping the app away from recents doesn't kill the process, so the SDK can't detect the resulting force restart. It has no effect when App Terminations reporting is disabled.
+- Adds `response_index` to each multiple-choice response in the survey `OnFinishCallback` payload: the index of the selected option, or `-1` otherwise.
+
+### Enhancements
+
+- Improves IDE support for the public API: parameter names now show as named arguments in Kotlin and as parameter hints in Java.
+- [Internal] Improves the SDK's internal architecture.
+
+### Bug Fixes
+
+- Fixes missing scroll and swipe Repro Steps on Jetpack Compose 1.7+ screens.
+- Fixes a thread-pool deadlock on devices with fewer than 4 CPU cores that could stall the SDK and leak Activities and Fragments.
+
 ## 19.14.1 (October 27, 2026)
 
 ### Bug Fixes

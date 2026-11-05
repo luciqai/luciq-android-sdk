@@ -1,5 +1,16 @@
 # Luciq Android SDK Changelog
 
+## 19.15.1 (November 5, 2026)
+
+### Enhancements
+
+- [Internal] Improves internal monitoring tools.
+
+### Bug Fixes
+
+- Fixes App Flows started right after SDK initialization on a fresh install being rejected until the SDK received its first configuration from the server.
+- Fixes sessions including user events logged in earlier sessions of the same app launch. Each session now includes only the user events logged since it started.
+
 ## 19.15.0 (October 29, 2026)
 
 ### New Features

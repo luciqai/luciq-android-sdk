@@ -1,5 +1,37 @@
 # Luciq Android SDK Changelog
 
+## 19.16.0 (November 13, 2026)
+
+### New Features
+
+- Adds `exception` and `failureName` to `NetworkLogSnapshot`. A `NetworkLogListener` can read the exception behind a client-side network failure and record the failure under another name, for example when an interceptor added after Luciq's wraps the original failure.
+
+### Enhancements
+
+- Jetpack Compose tap steps in User Steps and Session Replay now name the `@Composable` function the tapped element is called from, as Repro Steps already do, for apps that use the Luciq Compiler Extension or `Modifier.luciqTrackingInfo`.
+- Scrolls and swipes that end without a fling (a drag that stops before the finger lifts) are now recorded as user steps and captured in Video-Like Replay interactions mode.
+
+### Bug Fixes
+
+- Fixes APM recording a 4xx or 5xx `HttpURLConnection` response as a client-side `FileNotFoundException` when the app reads the body with `getInputStream()` or `getContent()` without reading the response code first. APM now records it as its HTTP status, so on affected endpoints client-side failures decrease and 4xx/5xx responses increase.
+- Fixes a `NetworkLogListener` receiving an `HttpURLConnection` request that calls `connect()` explicitly before the request completed, with no response code and no failure. The listener now receives it once its outcome is known. As a result, APM no longer records a request whose app calls `connect()`, then reads only response headers other than `getContentLength()`, and never calls `disconnect()`.
+- Fixes `keepScreenNames` not applying to Jetpack Compose tap steps in Repro Steps and Session Replay, which still named the screen by its obfuscated Activity class.
+- Fixes Jetpack Compose tap steps reading only "Composable" instead of a button's text or an icon's content description. Text from private or masked Composables is still never captured, nor from a `ComposeView` that is private or sits inside a private View.
+- Fixes `Modifier.testTag` missing from Jetpack Compose tap steps in release builds minified with R8 on Compose 1.7 and later.
+- Fixes sessions reporting the previous launch's user attributes when attributes are set shortly after SDK initialization or the app is killed in the foreground.
+- Fixes Jetpack Compose tap labels and scroll/swipe steps degrading for the rest of the session, and a tap step or bug-report screenshot being dropped, when an app's `Modifier.semantics {}` block throws. That Composable is now treated as private.
+
+## 19.15.1 (November 5, 2026)
+
+### Enhancements
+
+- [Internal] Improves internal monitoring tools.
+
+### Bug Fixes
+
+- Fixes App Flows started right after SDK initialization on a fresh install being rejected until the SDK received its first configuration from the server.
+- Fixes sessions including user events logged in earlier sessions of the same app launch. Each session now includes only the user events logged since it started.
+
 ## 19.15.0 (October 29, 2026)
 
 ### New Features

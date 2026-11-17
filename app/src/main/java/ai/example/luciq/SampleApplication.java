@@ -31,7 +31,7 @@ public class SampleApplication extends Application {
         super.onCreate();
 
         //initializing Luciq
-        new Luciq.Builder(this, "token")
+        new Luciq.Builder(this, BuildConfig.INSTABUG_APP_TOKEN_KEY)
                 .setInvocationEvents(LuciqInvocationEvent.SHAKE, LuciqInvocationEvent.SCREENSHOT,
                         LuciqInvocationEvent.FLOATING_BUTTON, LuciqInvocationEvent.TWO_FINGER_SWIPE_LEFT)
                 .setSdkDebugLogsLevel(LogLevel.VERBOSE) // <--- don't use this in production

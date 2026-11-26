@@ -1,5 +1,31 @@
 # Luciq Android SDK Changelog
 
+## 19.17.0 (November 26, 2026)
+
+### New Features
+
+- Adds `BugReporting.setReportCategoriesScope` to show only some categories by their dashboard identifiers. If exactly one matches, it's preselected. Call it with no arguments to show them all again.
+
+```kotlin
+BugReporting.setReportCategoriesScope("checkout-refund", "payments")
+```
+
+### Enhancements
+
+- Improved bug report form accessibility: the attachments arrow is now labeled for all accessibility services, and disclaimer links now meet WCAG AA color contrast.
+
+### Bug Fixes
+
+- Fixes sessions from the first app run after a fresh install never being uploaded on Android 11+.
+- Fixes automatic surveys stopping for the rest of the session when a targeting condition has a non-numeric value.
+- Fixes auto-shown surveys ignoring dismissal history: the never-dismissed or longest-dismissed eligible survey is now shown first.
+- Fixes country-targeted surveys and announcements not matching on a fresh install.
+- Fixes survey answers sometimes not being sent after a user submits a survey.
+- Fixes time-triggered surveys not showing in a session when the app returns to the foreground within about 10 seconds of a surveys fetch.
+- Fixes Session Replay screenshots from an earlier session appearing in, or missing from, a later session in apps that use Compose screen tracking.
+- Fixes a crash in apps with WebView tracking enabled when the app wraps the WebView's current client and sets it back.
+- Fixes a crash in apps whose WebView subclass accepts only its own WebViewClient type when WebView tracking is enabled in the Luciq Gradle plugin.
+
 ## 19.16.0 (November 13, 2026)
 
 ### New Features
